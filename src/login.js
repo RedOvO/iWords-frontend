@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
 	Input,
 	Layout,
-	//Form,
+	Form,
 	Icon,
 	Button,
 	Checkbox,
@@ -15,6 +15,10 @@ import './login.css'
 const {
 	Header, Footer, Content,
 } = Layout;
+
+const handleSubmit = (e) => {
+
+}
 
 class Login extends Component {
 	render() {
@@ -44,24 +48,30 @@ class Login extends Component {
 							</Carousel>
 						</div>
 						<div className="login_container_right">
-							<h1>登录</h1>
-							<Divider />
-							<Input
-								prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-								placeholder="Username" />
-							<Input
-								prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-								type="password"
-								placeholder="Password" />
-							<Checkbox>
-								记住我？
-          	  </Checkbox>
-							<Button type="primary" className="login-form-button">
-								登录
-          		</Button>
-							<a href="#">
-								注册
-          		</a>
+							<Form onSubmit={this.handleSubmit} className="login-form">
+								<Form.Item>
+									<h1>登录</h1>
+									<Divider />
+								</Form.Item>
+								<Form.Item>
+									<Input
+										prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+										placeholder="Username" />
+								</Form.Item>
+								<Form.Item>
+									<Input
+										prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+										type="password"
+										placeholder="Password" />
+								</Form.Item>
+								<Form.Item>
+									<Checkbox>记住我？</Checkbox>
+									<Button type="primary" htmlType="submit" className="login-form-button">
+										登录
+          				</Button>
+									<a href="#">注册</a>
+								</Form.Item>
+							</Form>	
 						</div>
 					</div>
 
