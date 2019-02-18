@@ -16,8 +16,8 @@ class WebRouter extends Component {
 			<Router history={browserHistory}>
 				<Route path='/'>
 					<IndexRedirect to='/login' />
-					<Route path='login' Component={Login} />
-					<Route path='signup' Component={SignUp} />
+					<Route path='login' component={Login} />
+					<Route path='signup' component={SignUp} />
 				</Route>
 			</Router>
 		)
