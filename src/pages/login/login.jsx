@@ -31,7 +31,7 @@ class Login extends Component {
 					}}>
 					iWord
         </Header>
-				<Content className = "entire_container">
+				<Content className = "entire_login_container">
 					<div className="login_container">
 						<div className="login_container_left">
 							<Carousel autoplay>

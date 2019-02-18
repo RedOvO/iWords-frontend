@@ -2,7 +2,7 @@ img{
     width: 250px;
 }
 
-.entire_container{
+.entire_login_container{
     display: flex;
     justify-content: center; /*内部元素水平居中*/
     height: 600px;
