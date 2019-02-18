@@ -9,6 +9,10 @@ import {
 	Carousel,
 	Divider,
 } from 'antd';
+import {
+	Link,
+	browserHistory,
+} from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css'
 
@@ -47,11 +51,9 @@ class Login extends Component {
 							</Carousel>
 						</div>
 						<div className="login_container_right">
+							<h1 style={{textAlign: 'center'}}>登录</h1>
+							<Divider />
 							<Form onSubmit={this.handleSubmit} className="login-form">
-								<Form.Item>
-									<h1 style={{textAlign: 'center'}}>登录</h1>
-									<Divider />
-								</Form.Item>
 								<Form.Item>
 									<Input
 										prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -68,7 +70,12 @@ class Login extends Component {
 									<Button type="primary" htmlType="submit" className="login-form-button">
 										登录
           				</Button>
-									<a href="#">注册</a>
+									<Link
+                		onClick={() => {
+                  		browserHistory.push("/signup");
+                		}}>
+                		注册
+                  </Link>
 								</Form.Item>
 							</Form>	
 						</div>
