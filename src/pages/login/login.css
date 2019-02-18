@@ -59,3 +59,9 @@ img{
 .login-form-button {
     width: 100%;
 }
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
