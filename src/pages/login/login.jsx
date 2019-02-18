@@ -28,7 +28,6 @@ class Login extends Component {
 					style={{
 						color: 'white',
 						fontSize: '200%',
-						textAlign: 'left',
 					}}>
 					iWord
         </Header>
@@ -50,7 +49,7 @@ class Login extends Component {
 						<div className="login_container_right">
 							<Form onSubmit={this.handleSubmit} className="login-form">
 								<Form.Item>
-									<h1>登录</h1>
+									<h1 style={{textAlign: 'center'}}>登录</h1>
 									<Divider />
 								</Form.Item>
 								<Form.Item>
@@ -76,7 +75,12 @@ class Login extends Component {
 					</div>
 
 				</Content>
-				<Footer>Copyright ©2019 iWord All Rights Reserved.</Footer>
+				<Footer 
+					style={{
+						textAlign: 'center',
+					}}>
+					Copyright ©2019 iWord All Rights Reserved.
+				</Footer>
 			</Layout>
 
 
