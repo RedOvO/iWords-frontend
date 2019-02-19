@@ -56,7 +56,7 @@ class Signup extends Component {
 								marginLeft: '10px',
 							}}
 							onClick={() => {
-								browserHistory.push('/login');
+								browserHistory.push('/usermain/login');
 							}}
 						>
 						←返回登录

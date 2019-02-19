@@ -89,7 +89,7 @@ class login extends Component {
 								</Button>
 								<Link
 									onClick={() => {
-										browserHistory.push('/signup');
+										browserHistory.push('/usermain/signup');
 									}}
 								>
 									注册
