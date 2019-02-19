@@ -23,12 +23,12 @@ class Signup extends Component {
 		const { getFieldDecorator } = this.props.form;
 		const formItemLayout = {
 			labelCol: {
-				xs: { span: 24 },
-				sm: { span: 8 },
+				xs: { span: 4 },
+				sm: { span: 4 },
 			},
 			wrapperCol: {
-				xs: { span: 24 },
-				sm: { span: 16 },
+				xs: { span: 20 },
+				sm: { span: 20 },
 			},
 		};
 		const tailFormItemLayout = {
@@ -131,7 +131,7 @@ class Signup extends Component {
 										<Input placeholder='请填写少于16个字符的昵称' />
 									)}
 								</Form.Item>
-								<Form.Item {...tailFormItemLayout}>
+								<Form.Item style={{display: 'flex', justifyContent: 'center'}}>
 									<Button type="primary" htmlType="submit">注册</Button>
 								</Form.Item>
 							</Form>

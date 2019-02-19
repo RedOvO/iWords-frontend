@@ -39,15 +39,9 @@ class Login extends Component {
 					<div className="login_container">
 						<div className="login_container_left">
 							<Carousel autoplay>
-								<div>
-									<img src="https://media-image1.baydn.com/account/c904ba90e41ac6beadd8cdf4faa33bd295e44c5a5a58b7a0eda829806acc58e6.png"></img>
-								</div>
-    						<div>
-									<img src="https://media-image1.baydn.com/account/270b75bd758fb0630d9049115260248d40caec463f0bfbfa5ef6aa4126c07598.png"></img>
-								</div>
-    						<div>
-									<img src="https://media-image1.baydn.com/account/61cb85aee40a86fc12b220412cf366bfe805aecabd24a4e878ead8a47b56253f.png"></img>
-								</div>
+								<img src="https://media-image1.baydn.com/account/c904ba90e41ac6beadd8cdf4faa33bd295e44c5a5a58b7a0eda829806acc58e6.png"></img>
+								<img src="https://media-image1.baydn.com/account/270b75bd758fb0630d9049115260248d40caec463f0bfbfa5ef6aa4126c07598.png"></img>
+								<img src="https://media-image1.baydn.com/account/61cb85aee40a86fc12b220412cf366bfe805aecabd24a4e878ead8a47b56253f.png"></img>
 							</Carousel>
 						</div>
 						<div className="login_container_right">
