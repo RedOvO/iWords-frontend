@@ -14,36 +14,39 @@ const {
 	Header, Content, Footer,
 } = Layout;
 
-const handleSubmit = (e) => {
 
-}
 
 class Signup extends Component {
+	handleSubmit = (e) => {
+		e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+	}
+	
+	compareToFirstPassword = (rule, value, callback) => {
+		const form = this.props.form;
+		if(value && value !== form.getFieldValue('password')){
+			callback('两次输入密码不一致');
+		} else {
+			callback();
+		}
+	}
+	
 	render() {
 		const { getFieldDecorator } = this.props.form;
 		const formItemLayout = {
 			labelCol: {
-				xs: { span: 4 },
-				sm: { span: 4 },
+				xs: { span: 5 },
+				sm: { span: 5 },
 			},
 			wrapperCol: {
-				xs: { span: 20 },
-				sm: { span: 20 },
+				xs: { span: 15 },
+				sm: { span: 15 },
 			},
 		};
-		const tailFormItemLayout = {
-			wrapperCol: {
-				xs: {
-					span: 24,
-					offset: 0,
-				},
-				sm: {
-					span: 16,
-					offset: 8,
-				},
-			},
-		};
-
 		return (
 			<Layout>
 				<Header

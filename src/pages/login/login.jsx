@@ -15,17 +15,24 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css'
+import { getFileItem } from 'antd/lib/upload/utils';
 
 const {
 	Header, Footer, Content,
 } = Layout;
 
-const handleSubmit = (e) => {
+class login extends Component {
+	handleSubmit = (e) => {
+		e.preventDefault();
+			this.props.form.validateFields((err, values) => {
+				if (!err) {
+					console.log('Received values of form: ', values);
+				}
+			});
+	}
 
-}
-
-class Login extends Component {
 	render() {
+		const {getFieldDecorator} = this.props.form;
 		return (
 			<Layout>
 				<Header
@@ -49,18 +56,40 @@ class Login extends Component {
 							<Divider />
 							<Form onSubmit={this.handleSubmit} className="login-form">
 								<Form.Item>
-									<Input
-										prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-										placeholder="Username" />
+									{getFieldDecorator('email', {
+										rules: [{
+											required: true,
+											message: '请输入邮箱！',
+										},{
+											type: 'email',
+											message: '请输入有效邮箱',
+										}],
+									})(
+										<Input
+											prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+											placeholder="E-mail" />
+									)}
 								</Form.Item>
 								<Form.Item>
-									<Input
-										prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-										type="password"
-										placeholder="Password" />
+									{getFieldDecorator('password', {
+										rules:[{
+											required: true,
+											message: '请输入密码！',
+										}],
+									})(
+										<Input
+											prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+											type="password"
+											placeholder="Password" />
+									)}
 								</Form.Item>
 								<Form.Item>
-									<Checkbox>记住我？</Checkbox>
+									{getFieldDecorator('remember', {
+										valuePropName: 'checked',
+										initialValue: true,
+									})(
+										<Checkbox>记住我？</Checkbox>
+									)}
 									<Button type="primary" htmlType="submit" className="login-form-button">
 										登录
           				</Button>
@@ -89,5 +118,7 @@ class Login extends Component {
 		)
 	}
 }
+
+const Login = Form.create({name : 'login'})(login);
 
 export default Login;
