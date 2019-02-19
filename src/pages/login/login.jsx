@@ -14,8 +14,8 @@ import {
 	browserHistory,
 } from 'react-router';
 import 'antd/dist/antd.css';
-import './login.css'
-import { getFileItem } from 'antd/lib/upload/utils';
+import './login.css';
+
 
 const {
 	Content,
@@ -38,9 +38,9 @@ class login extends Component {
 				<div className="login_container">
 					<div className="login_container_left">
 						<Carousel autoplay>
-							<img src="https://media-image1.baydn.com/account/c904ba90e41ac6beadd8cdf4faa33bd295e44c5a5a58b7a0eda829806acc58e6.png"></img>
-							<img src="https://media-image1.baydn.com/account/270b75bd758fb0630d9049115260248d40caec463f0bfbfa5ef6aa4126c07598.png"></img>
-							<img src="https://media-image1.baydn.com/account/61cb85aee40a86fc12b220412cf366bfe805aecabd24a4e878ead8a47b56253f.png"></img>
+							<img src="https://media-image1.baydn.com/account/c904ba90e41ac6beadd8cdf4faa33bd295e44c5a5a58b7a0eda829806acc58e6.png" alt="" />
+							<img src="https://media-image1.baydn.com/account/270b75bd758fb0630d9049115260248d40caec463f0bfbfa5ef6aa4126c07598.png" alt="" />
+							<img src="https://media-image1.baydn.com/account/61cb85aee40a86fc12b220412cf366bfe805aecabd24a4e878ead8a47b56253f.png" alt="" />
 						</Carousel>
 					</div>
 					<div className="login_container_right">
@@ -59,7 +59,8 @@ class login extends Component {
 								})(
 									<Input
 										prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-										placeholder="E-mail" />
+										placeholder="E-mail"
+									/>
 								)}
 							</Form.Item>
 							<Form.Item>
@@ -72,7 +73,8 @@ class login extends Component {
 									<Input
 										prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
 										type="password"
-										placeholder="Password" />
+										placeholder="Password"
+									/>
 								)}
 							</Form.Item>
 							<Form.Item>
@@ -84,20 +86,21 @@ class login extends Component {
 								)}
 								<Button type="primary" htmlType="submit" className="login-form-button">
 									登录
-          				</Button>
+								</Button>
 								<Link
 									onClick={() => {
-										browserHistory.push("/signup");
-									}}>
+										browserHistory.push('/signup');
+									}}
+								>
 									注册
-                  </Link>
+								</Link>
 							</Form.Item>
 						</Form>
 					</div>
 				</div>
 
 			</Content>
-		)
+		);
 	}
 }
 

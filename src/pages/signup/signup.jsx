@@ -14,8 +14,6 @@ const {
 	Content,
 } = Layout;
 
-
-
 class Signup extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
@@ -58,10 +56,11 @@ class Signup extends Component {
 								marginLeft: '10px',
 							}}
 							onClick={() => {
-								browserHistory.push('/login')
+								browserHistory.push('/login');
 							}}
-						>←返回登录
-							</Button>
+						>
+						←返回登录
+						</Button>
 						<Divider />
 						<Form onSubmit={this.handleSubmit} className="signup-form">
 							<Form.Item
@@ -120,10 +119,10 @@ class Signup extends Component {
 										message: '请输入昵称',
 									}, {
 										max: 16,
-										message: "字符超过限制！"
+										message: '字符超过限制！'
 									}],
 								})(
-									<Input placeholder='请填写少于16个字符的昵称' />
+									<Input placeholder="请填写少于16个字符的昵称" />
 								)}
 							</Form.Item>
 							<Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
@@ -133,7 +132,7 @@ class Signup extends Component {
 					</div>
 				</div>
 			</Content>
-		)
+		);
 	}
 }
 

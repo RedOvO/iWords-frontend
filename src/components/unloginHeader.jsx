@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 
-const {Header} = Layout;
+const { Header } = Layout;
 
 class UnloginHeader extends Component {
 	render() {
@@ -13,10 +13,11 @@ class UnloginHeader extends Component {
 				style={{
 					color: 'white',
 					fontSize: '200%',
-				}}>
+				}}
+			>
 				iWord
-      </Header>
-		)
+			</Header>
+		);
 	}
 }
 

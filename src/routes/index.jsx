@@ -3,7 +3,6 @@ import {
 	browserHistory,
 	Router,
 	Route,
-	IndexRoute,
 	IndexRedirect,
 } from 'react-router';
 import UserMain from '../userMain';
@@ -14,13 +13,13 @@ class WebRouter extends Component {
 	render() {
 		return (
 			<Router history={browserHistory}>
-				<Route path='/' component={UserMain}>
-					<IndexRedirect to='/login' />
-					<Route path='login' component={Login} />
-					<Route path='signup' component={SignUp} />
+				<Route path="/" component={UserMain}>
+					<IndexRedirect to="/login" />
+					<Route path="login" component={Login} />
+					<Route path="signup" component={SignUp} />
 				</Route>
 			</Router>
-		)
+		);
 	}
 }
 
