@@ -7,11 +7,11 @@ import {
 	Button,
 	Divider,
 	Form,
-	Input,
+	Input
 } from 'antd';
 
 const {
-	Content,
+	Content
 } = Layout;
 
 class Signup extends Component {
@@ -25,7 +25,7 @@ class Signup extends Component {
 	}
 
 	compareToFirstPassword = (rule, value, callback) => {
-		const form = this.props.form;
+		const { form } = this.props;
 		if (value && value !== form.getFieldValue('password')) {
 			callback('两次输入密码不一致');
 		} else {
@@ -38,12 +38,12 @@ class Signup extends Component {
 		const formItemLayout = {
 			labelCol: {
 				xs: { span: 5 },
-				sm: { span: 5 },
+				sm: { span: 5 }
 			},
 			wrapperCol: {
 				xs: { span: 15 },
-				sm: { span: 15 },
-			},
+				sm: { span: 15 }
+			}
 		};
 		return (
 			<Content>
@@ -53,7 +53,7 @@ class Signup extends Component {
 						<Button
 							style={{
 								width: '100px',
-								marginLeft: '10px',
+								marginLeft: '10px'
 							}}
 							onClick={() => {
 								browserHistory.push('/login');
@@ -70,11 +70,11 @@ class Signup extends Component {
 								{getFieldDecorator('email', {
 									rules: [{
 										type: 'email',
-										message: '请输入有效邮箱',
+										message: '请输入有效邮箱'
 									}, {
 										required: true,
-										message: '请输入您的邮箱',
-									}],
+										message: '请输入您的邮箱'
+									}]
 								})(
 									<Input />
 								)}
@@ -86,10 +86,10 @@ class Signup extends Component {
 								{getFieldDecorator('password', {
 									rules: [{
 										required: true,
-										message: '请输入密码',
+										message: '请输入密码'
 									}, {
-										validator: this.validateToNextPassword,
-									}],
+										validator: this.validateToNextPassword
+									}]
 								})(
 									<Input type="password" />
 								)}
@@ -101,10 +101,10 @@ class Signup extends Component {
 								{getFieldDecorator('confirm', {
 									rules: [{
 										required: true,
-										message: '请确认密码',
+										message: '请确认密码'
 									}, {
-										validator: this.compareToFirstPassword,
-									}],
+										validator: this.compareToFirstPassword
+									}]
 								})(
 									<Input type="password" onBlur={this.handleConfirmBlur} />
 								)}
@@ -116,11 +116,11 @@ class Signup extends Component {
 								{getFieldDecorator('nickname', {
 									rules: [{
 										required: true,
-										message: '请输入昵称',
+										message: '请输入昵称'
 									}, {
 										max: 16,
 										message: '字符超过限制！'
-									}],
+									}]
 								})(
 									<Input placeholder="请填写少于16个字符的昵称" />
 								)}

@@ -7,18 +7,18 @@ import {
 	Button,
 	Checkbox,
 	Carousel,
-	Divider,
+	Divider
 } from 'antd';
 import {
 	Link,
-	browserHistory,
+	browserHistory
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
 
 
 const {
-	Content,
+	Content
 } = Layout;
 
 class login extends Component {
@@ -51,11 +51,11 @@ class login extends Component {
 								{getFieldDecorator('email', {
 									rules: [{
 										required: true,
-										message: '请输入邮箱！',
+										message: '请输入邮箱！'
 									}, {
 										type: 'email',
-										message: '请输入有效邮箱',
-									}],
+										message: '请输入有效邮箱'
+									}]
 								})(
 									<Input
 										prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -67,8 +67,8 @@ class login extends Component {
 								{getFieldDecorator('password', {
 									rules: [{
 										required: true,
-										message: '请输入密码！',
-									}],
+										message: '请输入密码！'
+									}]
 								})(
 									<Input
 										prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -80,7 +80,7 @@ class login extends Component {
 							<Form.Item>
 								{getFieldDecorator('remember', {
 									valuePropName: 'checked',
-									initialValue: true,
+									initialValue: true
 								})(
 									<Checkbox>记住我？</Checkbox>
 								)}
