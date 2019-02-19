@@ -3,7 +3,7 @@ import {
 	browserHistory,
 	Router,
 	Route,
-	IndexRedirect,
+	IndexRedirect
 } from 'react-router';
 import UserMain from '../userMain';
 import Login from '../pages/login/login';
