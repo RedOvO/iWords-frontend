@@ -1,0 +1,35 @@
+.entire_recite_container{
+	display: flex;
+  justify-content: center; /*内部元素水平居中*/
+  height: 600px;
+}
+
+.recite_container{
+	display: flex;
+	flex-direction: row;
+	width: 960px;
+	height: 500px;
+	background-color: rgb(231, 231, 231);
+	margin-top: 30px;
+	border-radius: 3px;
+	box-shadow: darkgrey 3px 3px 3px 3px;
+	padding: 30px;
+}
+
+.cet4_container{
+	background-color: white;
+	margin-top: -17px;
+	border-radius: 3px;
+	width: 900px;
+	height: 400px;
+	background-color: rgb(240, 240, 240)
+}
+
+.cet6_container{
+	background-color: white;
+	margin-top: -17px;
+	border-radius: 3px;
+	width: 900px;
+	height: 400px;
+	background-color: rgb(240, 240, 240)
+}
