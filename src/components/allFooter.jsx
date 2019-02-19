@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Layout,
+	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -11,7 +11,7 @@ class AllFooter extends Component {
 		return (
 			<Footer
 				style={{
-					textAlign: 'center',
+					textAlign: 'center'
 				}}
 			>
 				Copyright ©2019 iWord All Rights Reserved.

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Layout,
+	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
 import UnloginHeader from './components/unloginHeader';
