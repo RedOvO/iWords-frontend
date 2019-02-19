@@ -3,17 +3,18 @@ import {
 	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
+import './book.css';
 
 const { Content } = Layout;
 
-class Recite extends Component {
+class Book extends Component {
 	render() {
 		return (
 			<Content>
-				<div>aaa</div>
+				<div>bbb</div>
 			</Content>
 		);
 	}
 }
 
-export default Recite;
+export default Book;

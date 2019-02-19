@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Layout,
+	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
 
@@ -12,7 +12,7 @@ class UnloginHeader extends Component {
 			<Header
 				style={{
 					color: 'white',
-					fontSize: '200%',
+					fontSize: '200%'
 				}}
 			>
 				iWord
