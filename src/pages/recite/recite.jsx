@@ -2,16 +2,30 @@ import React, { Component } from 'react';
 import {
 	Layout,
 	Tabs,
-	Progress
+	Progress,
+	Card,
+	Icon,
+	Rate
 } from 'antd';
 import 'antd/dist/antd.css';
 import './recite.css';
 
 const { Content } = Layout;
 const TabPane = Tabs.TabPane;
+const desc = ['收藏到单词本'];
 
 class Recite extends Component {
+	state = {
+		value: 0
+	}
+
+	handleChange = (value) => {
+		this.setState({ value });
+	}
+
 	render() {
+		const { value } = this.state;
+
 		return (
 			<Content className="entire_recite_container">
 				<div className="recite_container">
@@ -19,9 +33,21 @@ class Recite extends Component {
 						<TabPane tab="四级" key="1">
 							<div className="pane_container">
 								<div className="word_container">
-									<div className="one_word_container">
-										Hello CET4!
-									</div>
+									<Card
+										style={{ width: 600 }}
+										actions={[<Icon type="check-circle" />, <Icon type="close-circle" />]}
+									>
+										<div className="one_word_container">
+											<h1 style={{ fontSize: '45px', fontWeight: '700' }}>century</h1>
+											<Rate
+												count={1}
+												tooltips={desc}
+												onChange={this.handleChange}
+												value={value}
+												style={{ fontSize: 50, marginLeft: '20px', color: '#40a9ff' }}
+											/>
+										</div>
+									</Card>
 								</div>
 								<div className="progress_container">
 									<div className="progress">

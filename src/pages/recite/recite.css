@@ -37,10 +37,7 @@
 }
 
 .one_word_container{
-	background-color: white;
-	width: 90%;
-	height: 50%;
-	border-radius: 2px;
+	display: flex;
 }
 
 .progress_container{

@@ -17,8 +17,8 @@ module.exports = {
         "react/prop-types": "off",
         "jsx-a11y/anchor-is-valid": "off",
         "no-console": "off",
-				"react/destructuring-assignment": "off",
-				"prefer-destructuring": "off",
+        "react/destructuring-assignment": "off",
+        "prefer-destructuring": "off",
         "linebreak-style": [0 ,"error", "windows"]
     }
 };
