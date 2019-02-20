@@ -1,0 +1,10 @@
+.entire_book_container{
+	display: flex;
+  justify-content: center; /*内部元素水平居中*/
+  height: 640px;
+}
+
+.book_container{
+	width: 1000px;
+	height: 600px;
+}
