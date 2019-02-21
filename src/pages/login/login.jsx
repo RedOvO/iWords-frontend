@@ -15,7 +15,7 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
-
+import axios from 'axios';
 
 const {
 	Content
@@ -27,6 +27,19 @@ class login extends Component {
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values);
+				axios({
+					method: 'post',
+					url: 'localhost:3000/login',
+					data: {
+						email: values.email,
+						password: values.password
+					},
+					header: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					}
+				}).then((response) => {
+					console.log(response);
+				});
 			}
 		});
 	}
