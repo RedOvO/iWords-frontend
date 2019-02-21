@@ -19,6 +19,6 @@ module.exports = {
         "no-console": "off",
         "react/destructuring-assignment": "off",
         "prefer-destructuring": "off",
-        "linebreak-style": [0 ,"error", "windows"]
+        "linebreak-style": [0 ,"error", "windows"],
     }
 };
