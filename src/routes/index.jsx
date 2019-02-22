@@ -20,7 +20,7 @@ class WebRouter extends Component {
 		return (
 			<Router history={browserHistory}>
 				<Route path="/">
-					<IndexRedirect to="/usermain/login" />
+					<IndexRedirect to="/app/recite" />
 					<Route path="usermain" component={UserMain}>
 						<Route path="login" component={Login} />
 						<Route path="signup" component={SignUp} />
