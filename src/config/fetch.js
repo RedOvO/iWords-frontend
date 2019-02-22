@@ -1,4 +1,4 @@
-const BaseUrl = 'https://easydoc.xyz/mock/28277352/36024048';
+const BaseUrl = 'https://easydoc.xyz/mock/46635364/36024048';
 
 export function postData(url, data) {
 	return fetch(BaseUrl + url, {

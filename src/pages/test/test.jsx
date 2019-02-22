@@ -4,6 +4,8 @@ import {
 	Tabs
 } from 'antd';
 import 'antd/dist/antd.css';
+import { browserHistory } from 'react-router';
+import { withCookies } from 'react-cookie';
 import './test.css';
 import OneWordPanel from '../../components/oneWordPanel/oneWordPanel';
 
@@ -11,6 +13,18 @@ const { Content } = Layout;
 const TabPane = Tabs.TabPane;
 
 class Test extends Component {
+	constructor(props) {
+		super(props);
+		const { cookies } = this.props;
+		if (cookies.get('userInfo')) {
+			this.state = {
+				setting: cookies.get('userInfo').setting
+			};
+		} else {
+			browserHistory.push('/usermain/login');
+		}
+	}
+
 	render() {
 		return (
 			<Content className="entire_test_container">
@@ -29,4 +43,4 @@ class Test extends Component {
 	}
 }
 
-export default Test;
+export default withCookies(Test);

@@ -21,7 +21,6 @@ import { instanceOf } from 'prop-types';
 import { postData } from '../../config/fetch';
 
 const { Content } = Layout;
-const confirm = Modal.confirm;
 
 class login extends Component {
 	// constructor(props) {
@@ -45,30 +44,21 @@ class login extends Component {
 					password: values.password
 				}).then((data) => {
 					console.log(data);
-					if (data.message === true && data.code === 200) {
+					if (data.message === true/* && data.code === '200' */) {
 						cookies.set('userInfo', {
 							name: data.data.name,
-							setting: data.data.setting
+							setting: data.data.setting,
+							email: values.email
 						}, {
 							path: '/'
 						});
 						browserHistory.push('/app/recite');
-					} else if (data.code === 1035) {
-						this.showConfirm('密码错误');
-					} else if (data.code === 1036) {
-						this.showConfirm('用户不存在');
+					} else if (data.code === '1035') {
+						Modal.error({ title: '登录失败', content: '密码错误' });
+					} else if (data.code === '1036') {
+						Modal.error({ title: '登录失败', content: '用户不存在' });
 					}
 				}).catch(error => console.error(error));
-			}
-		});
-	}
-
-	showConfirm = (message) => {
-		confirm({
-			title: '登录失败',
-			content: message,
-			onOk() {
-				console.log('确认');
 			}
 		});
 	}

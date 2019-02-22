@@ -6,6 +6,11 @@ import {
 	Popconfirm
 } from 'antd';
 import 'antd/dist/antd.css';
+import {
+	Link,
+	browserHistory
+} from 'react-router';
+import { withCookies } from 'react-cookie';
 import './book.css';
 
 const { Content } = Layout;
@@ -14,10 +19,14 @@ const TabPane = Tabs.TabPane;
 class Book extends Component {
 	constructor(props) {
 		super(props);
+		const { cookies } = this.props;
+		if (!cookies.get('user')) {
+			browserHistory.push('/app/book');
+		}
 		this.columns = [{
 			title: '序号',
 			dataIndex: 'key',
-			render: text => <a href="#">{text}</a>,
+			render: text => <Link to="#">{text}</Link>,
 			width: '8%'
 		}, {
 			title: '单词',
@@ -36,9 +45,9 @@ class Book extends Component {
 						title="是否删除该单词?"
 						okText="确认"
 						cancelText="取消"
-						onConfirm={() => this.wordDelete()}
+						onConfirm={() => console.log('Delete')}
 					>
-						<a href="#">删除</a>
+						<Link to="#">删除</Link>
 					</Popconfirm>
 				);
 			}
@@ -53,10 +62,6 @@ class Book extends Component {
 			word: 'apple',
 			description: '苹果'
 		}];
-	}
-
-	wordDelete = () => {
-		console.log('wordDelete()');
 	}
 
 	render() {
@@ -89,4 +94,4 @@ class Book extends Component {
 	}
 }
 
-export default Book;
+export default withCookies(Book);
