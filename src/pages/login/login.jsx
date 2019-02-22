@@ -7,7 +7,8 @@ import {
 	Button,
 	Checkbox,
 	Carousel,
-	Divider
+	Divider,
+	Modal
 } from 'antd';
 import {
 	Link,
@@ -15,21 +16,59 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 import { postData } from '../../config/fetch';
 
-const {
-	Content
-} = Layout;
+const { Content } = Layout;
+const confirm = Modal.confirm;
 
 class login extends Component {
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 	}
+	// }
+
+	static propTypes = {
+		cookies: instanceOf(Cookies).isRequired
+	}
+
 	handleSubmit = (e) => {
+		const { cookies } = this.props;
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values);
-				postData('/login', {})
-					.then(data => console.log(data))
-					.catch(error => console.error(error));
+				postData('/login', {
+					email: values.email,
+					password: values.password
+				}).then((data) => {
+					console.log(data);
+					if (data.message === true && data.code === 200) {
+						cookies.set('userInfo', {
+							name: data.data.name,
+							setting: data.data.setting
+						}, {
+							path: '/'
+						});
+						browserHistory.push('/app/recite');
+					} else if (data.code === 1035) {
+						this.showConfirm('密码错误');
+					} else if (data.code === 1036) {
+						this.showConfirm('用户不存在');
+					}
+				}).catch(error => console.error(error));
+			}
+		});
+	}
+
+	showConfirm = (message) => {
+		confirm({
+			title: '登录失败',
+			content: message,
+			onOk() {
+				console.log('确认');
 			}
 		});
 	}
@@ -109,4 +148,4 @@ class login extends Component {
 
 const Login = Form.create({ name: 'login' })(login);
 
-export default Login;
+export default withCookies(Login);
