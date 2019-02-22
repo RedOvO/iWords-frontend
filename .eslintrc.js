@@ -4,7 +4,8 @@ module.exports = {
     "globals": {
         "document": true,
         "foo": true,
-        "window": true
+        "window": true,
+        "fetch": true
     },
     "rules":{
         "indent": [2, "tab"],
@@ -20,5 +21,6 @@ module.exports = {
         "react/destructuring-assignment": "off",
         "prefer-destructuring": "off",
         "linebreak-style": [0 ,"error", "windows"],
+        "import/prefer-default-export": "off"
     }
 };
