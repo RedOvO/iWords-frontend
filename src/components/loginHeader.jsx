@@ -103,7 +103,7 @@ class LoginHeader extends Component {
 						title={<span className="submenu-title-wrapper"><Icon type="user" />Hello! {nickname}</span>}
 					>
 						<MenuItemGroup title="用户中心">
-							<Menu.Item key="setting"><Icon type="setting" />用户设置</Menu.Item>
+							<Menu.Item key="setting"><Link to="/app/setting"><Icon type="setting" />用户设置</Link></Menu.Item>
 							<Menu.Item key="logout" onClick={this.showModal}><Icon type="logout" />退出登录</Menu.Item>
 						</MenuItemGroup>
 					</SubMenu>

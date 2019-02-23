@@ -1,0 +1,16 @@
+.entire_setting_container{
+	display: flex;
+  justify-content: center; /*内部元素水平居中*/
+	height: 600px;
+}
+
+.setting_container{
+	display: flex;
+	flex-direction: column;
+	width: 1000px;
+	height: 400px;
+	margin-top: 30px;
+	background-color: rgb(228, 228, 228);
+	padding: 50px;
+	border-radius: 3px;
+}

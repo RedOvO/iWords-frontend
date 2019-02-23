@@ -33,6 +33,13 @@ class login extends Component {
 		cookies: instanceOf(Cookies).isRequired
 	}
 
+	componentWillMount() {
+		const { cookies } = this.props;
+		if (cookies.get('userInfo')) {
+			browserHistory.push('/app/recite');
+		}
+	}
+
 	handleSubmit = (e) => {
 		const { cookies } = this.props;
 		e.preventDefault();
@@ -50,8 +57,8 @@ class login extends Component {
 							setting: data.data.setting,
 							email: values.email
 						}, {
-							path: '/'
-						});
+								path: '/'
+							});
 						browserHistory.push('/app/recite');
 					} else if (data.code === '1035') {
 						Modal.error({ title: '登录失败', content: '密码错误' });

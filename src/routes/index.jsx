@@ -13,6 +13,7 @@ import Recite from '../pages/recite/recite';
 import Book from '../pages/book/book';
 import Test from '../pages/test/test';
 import Review from '../pages/review/review';
+import Setting from '../pages/setting/setting';
 
 
 class WebRouter extends Component {
@@ -20,7 +21,7 @@ class WebRouter extends Component {
 		return (
 			<Router history={browserHistory}>
 				<Route path="/">
-					<IndexRedirect to="/app/recite" />
+					<IndexRedirect to="/usermain/login" />
 					<Route path="usermain" component={UserMain}>
 						<Route path="login" component={Login} />
 						<Route path="signup" component={SignUp} />
@@ -30,6 +31,7 @@ class WebRouter extends Component {
 						<Route path="book" component={Book} />
 						<Route path="test" component={Test} />
 						<Route path="review" component={Review} />
+						<Route path="setting" component={Setting} />
 					</Route>
 				</Route>
 			</Router>
