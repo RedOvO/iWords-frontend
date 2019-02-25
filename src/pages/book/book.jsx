@@ -20,8 +20,8 @@ class Book extends Component {
 	constructor(props) {
 		super(props);
 		const { cookies } = this.props;
-		if (!cookies.get('user')) {
-			browserHistory.push('/app/book');
+		if (cookies.get('user')) {
+			browserHistory.push('/usermain/login');
 		}
 		this.columns = [{
 			title: '序号',

@@ -55,12 +55,19 @@ class LoginHeader extends Component {
 		}).then((data) => {
 			console.log(data);
 			if (data.message === true) {
+				console.log(data.message);
 				cookies.remove('userInfo');
 				browserHistory.push('/usermain/login');
 			} else {
 				Modal.error({ title: '提示', content: '注销失败', onOk: this.setState({ visible: false }) });
 			}
-		}).catch(error => console.error(error));
+		}).catch((error) => {
+			console.log(error);
+			cookies.remove('userInfo', {
+				path: '/'
+			});
+			browserHistory.push('/usermain/login');
+		});
 	}
 
 	render() {

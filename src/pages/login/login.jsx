@@ -57,8 +57,9 @@ class login extends Component {
 							setting: data.data.setting,
 							email: values.email
 						}, {
-								path: '/'
-							});
+							path: '/',
+							maxAge: 600
+						});
 						browserHistory.push('/app/recite');
 					} else if (data.code === '1035') {
 						Modal.error({ title: '登录失败', content: '密码错误' });
