@@ -16,6 +16,7 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
+import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import { postData } from '../../config/fetch';
@@ -49,7 +50,20 @@ class login extends Component {
 				postData('/login', {
 					email: values.email,
 					password: values.password
-				}).then((data) => {
+				}
+				// axios({
+				// 	method: 'post',
+				// 	url: 'https://easydoc.xyz/mock/46635364/36024048/login',
+				// 	dataType: 'json',
+				// 	data: {
+				// 		email: '599236422@qq.com',
+				// 		password: '123456'
+				// 	},
+				// 	headers: {
+				// 		'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+				// 	}
+				// }
+				).then((data) => {
 					console.log(data);
 					if (data.message === true/* && data.code === '200' */) {
 						cookies.set('userInfo', {
