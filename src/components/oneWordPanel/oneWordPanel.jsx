@@ -13,12 +13,19 @@ class OneWordPanel extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: 0
+			value: 0,
+			showdesc: false
 		};
 	}
 
 	handleChange = (value) => {
 		this.setState({ value });
+	}
+
+	HandleshowdescChange = () => {
+		this.setState = {
+			showdesc: true
+		};
 	}
 
 	render() {
@@ -53,6 +60,11 @@ class OneWordPanel extends Component {
 								}}
 							/>
 						</div>
+						{this.state.showdesc ? (
+							<Card className="one_word_expression" bodyStyle={{ backgroundColor: 'rgb(240, 240, 240)' }}>
+								<p style={{ fontSize: 15 }}>n. 世纪</p>
+							</Card>
+						) : null}
 					</Card>
 				</div>
 				<div className="progress_container">
