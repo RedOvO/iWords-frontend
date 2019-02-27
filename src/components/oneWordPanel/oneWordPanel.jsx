@@ -3,7 +3,8 @@ import {
 	Card,
 	Icon,
 	Rate,
-	Progress
+	Progress,
+	Button
 } from 'antd';
 import 'antd/dist/antd.css';
 import './oneWordPanel.css';
@@ -14,7 +15,16 @@ class OneWordPanel extends Component {
 		super(props);
 		this.state = {
 			value: 0,
-			showdesc: false
+			showdesc: false,
+			action: [
+				<Button type="primary">
+					<Icon type="check-circle" />
+					认识
+				</Button>,
+				<Button type="primary" onClick={this.handleShowdesc}>
+					<Icon type="close-circle" />
+					不认识
+				</Button>]
 		};
 	}
 
@@ -22,10 +32,31 @@ class OneWordPanel extends Component {
 		this.setState({ value });
 	}
 
-	HandleshowdescChange = () => {
-		this.setState = {
-			showdesc: true
-		};
+	handleShowdesc = () => {
+		this.setState({
+			showdesc: true,
+			action: [
+				<Button type="primary" onClick={this.handleHidedesc}>
+					<Icon type="step-forward" />
+					下一个
+				</Button>]
+		});
+	}
+
+	handleHidedesc = () => {
+		this.setState({
+			showdesc: false,
+			action: [
+				<Button type="primary">
+					<Icon type="check-circle" />
+					认识
+				</Button>,
+				<Button type="primary" onClick={this.handleShowdesc}>
+					<Icon type="close-circle" />
+					不认识
+				</Button>
+			]
+		});
 	}
 
 	render() {
@@ -35,16 +66,7 @@ class OneWordPanel extends Component {
 				<div className="word_container">
 					<Card
 						style={{ width: 600 }}
-						actions={[
-							<span>
-								<Icon type="check-circle" />
-								认识
-							</span>,
-							<span>
-								<Icon type="close-circle" />
-								不认识
-							</span>
-						]}
+						actions={this.state.action}
 					>
 						<div className="one_word_container">
 							<h1 style={{ fontSize: '45px', fontWeight: '700' }}>century</h1>

@@ -8,10 +8,10 @@ export function postData(url, data) {
 		cache: 'no-cache',
 		credentials: 'include',
 		headers: {
-			'content-type': 'application/json'
+			'content-type': 'application/x-www-form-urlencoded'
 		},
 		method: 'POST',
-		mode: 'no-cors',
+		mode: 'cors',
 		redirect: 'follow'
-	});
+	}).then(response => response.json());
 }
