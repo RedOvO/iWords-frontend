@@ -1,11 +1,12 @@
 // const BaseUrl = 'https://easydoc.xyz/mock/46635364/36024048';
-const BaseUrl = 'http://172.20.10.12:8080';
+// const BaseUrl = 'http://172.20.10.12:8080';
+const BaseUrl = 'http://localhost:5007';
 
 export function postData(url, data) {
 	return fetch(BaseUrl + url, {
 		body: JSON.stringify(data),
 		cache: 'no-cache',
-		credentials: 'omit',
+		credentials: 'include',
 		headers: {
 			'content-type': 'application/json'
 		},
