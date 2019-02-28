@@ -16,11 +16,11 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
-import axios from 'axios';
+// import axios from 'axios';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import { BaseUrl } from '../../config/baseUrl';
-// import { postData } from '../../config/fetch';
+// import { BaseUrl } from '../../config/baseUrl';
+import { postData } from '../../config/fetch';
 
 const { Content } = Layout;
 
@@ -48,21 +48,21 @@ class login extends Component {
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values);
-				// postData('/login', {
-				// 	email: values.email,
-				// 	password: values.password
-				// }
-				axios({
-					method: 'post',
-					url: BaseUrl.concat('/login'),
-					dataType: 'json',
-					data: {
-						email: values.email,
-						password: values.password
-					},
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-					}
+				postData('/login', {
+					email: values.email,
+					password: values.password
+				// });
+				// axios({
+				// 	method: 'post',
+				// 	url: BaseUrl.concat('/login'),
+				// 	dataType: 'json',
+				// 	data: {
+				// 		email: values.email,
+				// 		password: values.password
+				// 	},
+				// 	headers: {
+				// 		'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+				// 	}
 				}).then((response) => {
 					const data = response.data;
 					console.log(data);
