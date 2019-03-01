@@ -61,7 +61,7 @@ class login extends Component {
 						password: values.password
 					},
 					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+						'Content-Type': 'application/json;charset=UTF-8'
 					}
 				}).then((response) => {
 					const data = response.data;
