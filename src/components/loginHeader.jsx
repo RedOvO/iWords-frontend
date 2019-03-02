@@ -10,30 +10,35 @@ import {
 	Modal
 } from 'antd';
 import 'antd/dist/antd.css';
-// import { postData } from '../config/fetch';
-import { postData } from '../config/axios';
+import { postData } from '../config/fetch';
+// import { postData } from '../config/axios';
 
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-let nickname = '';
 
 class LoginHeader extends Component {
 	constructor(props) {
 		super(props);
-		const { cookies } = this.props;
-		if (cookies.get('userInfo')) {
-			this.state = {
-				username: cookies.get('userInfo').name,
-				email: cookies.get('userInfo').email,
-				visible: false
-			};
-		} else {
-			this.state = {
-				visible: false
-			};
-			browserHistory.push('/usermain/login');
-		}
+		this.state = {
+			username: '',
+			visible: false
+		};
+	}
+
+	componentWillMount() {
+		postData('/auth', {}).then((response) => {
+			console.log(response);
+			if (response.result === false) {
+				browserHistory.push('/usermain/login');
+			}
+		});
+		postData('/username', {}).then((response) => {
+			console.log(response);
+			this.setState({
+				username: response.username
+			});
+		});
 	}
 
 	showModal = () => {
@@ -49,33 +54,20 @@ class LoginHeader extends Component {
 	}
 
 	onLogout = () => {
-		const { cookies } = this.props;
-		postData('/logout', {
-			email: this.state.email
-		}).then((data) => {
-			console.log(data);
-			if (data.message === true) {
-				console.log(data.message);
-				cookies.remove('userInfo');
+		postData('/logout', {}).then((response) => {
+			console.log(response);
+			if (response.result === true) {
 				browserHistory.push('/usermain/login');
 			} else {
 				Modal.error({ title: '提示', content: '注销失败', onOk: this.setState({ visible: false }) });
 			}
 		}).catch((error) => {
 			console.log(error);
-			cookies.remove('userInfo', {
-				path: '/'
-			});
 			browserHistory.push('/usermain/login');
 		});
 	}
 
 	render() {
-		const { cookies } = this.props;
-		if (cookies.get('userInfo')) {
-			nickname = this.state.username;
-		}
-
 		return (
 			<Header>
 				<div className="logo" />
@@ -107,7 +99,7 @@ class LoginHeader extends Component {
 					</Menu.Item>
 					<SubMenu
 						style={{ float: 'right' }}
-						title={<span className="submenu-title-wrapper"><Icon type="user" />Hello! {nickname}</span>}
+						title={<span className="submenu-title-wrapper"><Icon type="user" />Hello! {this.state.username}</span>}
 					>
 						<MenuItemGroup title="用户中心">
 							<Menu.Item key="setting"><Link to="/app/setting"><Icon type="setting" />用户设置</Link></Menu.Item>

@@ -11,6 +11,7 @@ import {
 	browserHistory
 } from 'react-router';
 import './book.css';
+import { postData } from '../../config/axios';
 
 const { Content } = Layout;
 const TabPane = Tabs.TabPane;
@@ -18,10 +19,6 @@ const TabPane = Tabs.TabPane;
 class Book extends Component {
 	constructor(props) {
 		super(props);
-		const { cookies } = this.props;
-		if (cookies.get('user')) {
-			browserHistory.push('/usermain/login');
-		}
 		this.columns = [{
 			title: '序号',
 			dataIndex: 'key',
@@ -61,6 +58,16 @@ class Book extends Component {
 			word: 'apple',
 			description: '苹果'
 		}];
+	}
+
+	componentWillMount() {
+		postData('/auth', {}).then((response) => {
+			const data = response.data;
+			console.log(data);
+			if (data.result === false) {
+				browserHistory.push('/usermain/login');
+			}
+		});
 	}
 
 	render() {

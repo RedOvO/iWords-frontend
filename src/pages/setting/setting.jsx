@@ -5,11 +5,22 @@ import {
 	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
+import { browserHistory } from 'react-router';
 import './setting.css';
+import { postData } from '../../config/axios';
 
 const { Content } = Layout;
 
 class Setting extends Component {
+	componentWillMount() {
+		postData('/auth', {}).then((response) => {
+			console.log(response);
+			if (response.result === false) {
+				browserHistory.push('/usermain/login');
+			}
+		});
+	}
+
 	render() {
 		return (
 			<Content className="entire_setting_container">

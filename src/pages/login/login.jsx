@@ -16,8 +16,8 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
-import { postData } from '../../config/axios';
-// import { postData } from '../../config/fetch';
+// import { postData } from '../../config/axios';
+import { postData } from '../../config/fetch';
 
 const { Content } = Layout;
 
@@ -30,9 +30,8 @@ class login extends Component {
 
 	componentWillMount() {
 		postData('/auth', {}).then((response) => {
-			const data = response.data;
-			console.log(data);
-			if (data.result === true) {
+			console.log(response);
+			if (response.result === true) {
 				browserHistory.push('/app/recite');
 			}
 		});
@@ -47,13 +46,12 @@ class login extends Component {
 					email: values.email,
 					password: values.password
 				}).then((response) => {
-					const data = response.data;
-					console.log(data);
-					if (data.result === true) {
+					console.log(response);
+					if (response.result === true) {
 						browserHistory.push('/app/recite');
-					} else if (data.errcode === '1035') {
+					} else if (response.errcode === '1035') {
 						Modal.error({ title: '登录失败', content: '密码错误' });
-					} else if (data.errcode === '1036') {
+					} else if (response.errcode === '1036') {
 						Modal.error({ title: '登录失败', content: '用户不存在' });
 					}
 				}).catch(error => console.error(error));

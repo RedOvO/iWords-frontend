@@ -7,6 +7,7 @@ import 'antd/dist/antd.css';
 import { browserHistory } from 'react-router';
 import './review.css';
 import OneWordPanel from '../../components/oneWordPanel/oneWordPanel';
+import { postData } from '../../config/axios';
 
 const { Content } = Layout;
 const TabPane = Tabs.TabPane;
@@ -14,14 +15,18 @@ const TabPane = Tabs.TabPane;
 class Review extends Component {
 	constructor(props) {
 		super(props);
-		const { cookies } = this.props;
-		if (cookies.get('userInfo')) {
-			this.state = {
-				setting: 1
-			};
-		} else {
-			browserHistory.push('/usermain/login');
-		}
+		this.state = {
+			setting: 0
+		};
+	}
+
+	componentWillMount() {
+		postData('/auth', {}).then((response) => {
+			console.log(response);
+			if (response.result === false) {
+				browserHistory.push('/usermain/login');
+			}
+		});
 	}
 
 	render() {
