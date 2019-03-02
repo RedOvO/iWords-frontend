@@ -5,7 +5,6 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import { browserHistory } from 'react-router';
-import { withCookies } from 'react-cookie';
 import './test.css';
 import OneWordPanel from '../../components/oneWordPanel/oneWordPanel';
 
@@ -43,4 +42,4 @@ class Test extends Component {
 	}
 }
 
-export default withCookies(Test);
+export default Test;

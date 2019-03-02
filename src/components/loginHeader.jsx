@@ -10,8 +10,8 @@ import {
 	Modal
 } from 'antd';
 import 'antd/dist/antd.css';
-import { withCookies } from 'react-cookie';
-import { postData } from '../config/fetch';
+// import { postData } from '../config/fetch';
+import { postData } from '../config/axios';
 
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -130,4 +130,4 @@ class LoginHeader extends Component {
 	}
 }
 
-export default withCookies(LoginHeader);
+export default LoginHeader;

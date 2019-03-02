@@ -16,10 +16,7 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
-import axios from 'axios';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
-import { BaseUrl } from '../../config/baseUrl';
+import { postData } from '../../config/axios';
 // import { postData } from '../../config/fetch';
 
 const { Content } = Layout;
@@ -31,54 +28,32 @@ class login extends Component {
 	// 	}
 	// }
 
-	static propTypes = {
-		cookies: instanceOf(Cookies).isRequired
-	}
-
 	componentWillMount() {
-		const { cookies } = this.props;
-		if (cookies.get('userInfo')) {
-			browserHistory.push('/app/recite');
-		}
+		postData('/auth', {}).then((response) => {
+			const data = response.data;
+			console.log(data);
+			if (data.result === true) {
+				browserHistory.push('/app/recite');
+			}
+		});
 	}
 
 	handleSubmit = (e) => {
-		const { cookies } = this.props;
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log('Received values of form: ', values);
-				// postData('/login', {
-				// 	email: values.email,
-				// 	password: values.password
-				// }
-				axios({
-					method: 'post',
-					url: BaseUrl.concat('/login'),
-					dataType: 'json',
-					data: {
-						email: values.email,
-						password: values.password
-					},
-					headers: {
-						'Content-Type': 'application/json;charset=UTF-8'
-					}
+				postData('/login', {
+					email: values.email,
+					password: values.password
 				}).then((response) => {
 					const data = response.data;
 					console.log(data);
-					if (data.message === true/* && data.code === '200' */) {
-						cookies.set('userInfo', {
-							name: data.data.name,
-							setting: data.data.setting,
-							email: values.email
-						}, {
-							path: '/',
-							maxAge: 3600
-						});
+					if (data.result === true) {
 						browserHistory.push('/app/recite');
-					} else if (data.code === '1035') {
+					} else if (data.errcode === '1035') {
 						Modal.error({ title: '登录失败', content: '密码错误' });
-					} else if (data.code === '1036') {
+					} else if (data.errcode === '1036') {
 						Modal.error({ title: '登录失败', content: '用户不存在' });
 					}
 				}).catch(error => console.error(error));
@@ -161,4 +136,4 @@ class login extends Component {
 
 const Login = Form.create({ name: 'login' })(login);
 
-export default withCookies(Login);
+export default Login;

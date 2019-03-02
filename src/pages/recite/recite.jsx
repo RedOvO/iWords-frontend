@@ -5,7 +5,6 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import { browserHistory } from 'react-router';
-import { withCookies } from 'react-cookie';
 import './recite.css';
 import OneWordPanel from '../../components/oneWordPanel/oneWordPanel';
 
@@ -44,4 +43,4 @@ class Recite extends Component {
 }
 
 
-export default withCookies(Recite);
+export default Recite;

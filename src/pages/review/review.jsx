@@ -5,7 +5,6 @@ import {
 } from 'antd';
 import 'antd/dist/antd.css';
 import { browserHistory } from 'react-router';
-import { withCookies } from 'react-cookie';
 import './review.css';
 import OneWordPanel from '../../components/oneWordPanel/oneWordPanel';
 
@@ -18,7 +17,7 @@ class Review extends Component {
 		const { cookies } = this.props;
 		if (cookies.get('userInfo')) {
 			this.state = {
-				setting: cookies.get('userInfo').setting
+				setting: 1
 			};
 		} else {
 			browserHistory.push('/usermain/login');
@@ -43,4 +42,4 @@ class Review extends Component {
 	}
 }
 
-export default withCookies(Review);
+export default Review;

@@ -10,7 +10,6 @@ import {
 	Link,
 	browserHistory
 } from 'react-router';
-import { withCookies } from 'react-cookie';
 import './book.css';
 
 const { Content } = Layout;
@@ -94,4 +93,4 @@ class Book extends Component {
 	}
 }
 
-export default withCookies(Book);
+export default Book;

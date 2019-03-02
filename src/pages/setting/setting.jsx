@@ -5,7 +5,6 @@ import {
 	Layout
 } from 'antd';
 import 'antd/dist/antd.css';
-import { withCookies } from 'react-cookie';
 import './setting.css';
 
 const { Content } = Layout;
@@ -24,4 +23,4 @@ class Setting extends Component {
 	}
 }
 
-export default withCookies(Setting);
+export default Setting;
