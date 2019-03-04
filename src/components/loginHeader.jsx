@@ -10,8 +10,8 @@ import {
 	Modal
 } from 'antd';
 import 'antd/dist/antd.css';
-import { postData } from '../config/fetch';
-// import { postData } from '../config/axios';
+// import { postData } from '../config/fetch';
+import { postData } from '../config/axios';
 
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;

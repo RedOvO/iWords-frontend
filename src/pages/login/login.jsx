@@ -16,8 +16,8 @@ import {
 } from 'react-router';
 import 'antd/dist/antd.css';
 import './login.css';
-// import { postData } from '../../config/axios';
-import { postData } from '../../config/fetch';
+import { postData } from '../../config/axios';
+// import { postData } from '../../config/fetch';
 
 const { Content } = Layout;
 
