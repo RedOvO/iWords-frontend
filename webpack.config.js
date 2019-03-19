@@ -41,6 +41,11 @@ module.exports = {
 	],
 	resolve: {
 		extensions: ['.js', '.jsx', '.json']
+	},
+	devServer: {
+		contentBase: path.join(__dirname, "build"),
+		compress: true,
+		port: 8080
 	}
 
 }
