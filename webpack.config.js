@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
 	mode: 'development',
@@ -13,7 +14,10 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: ['style-loader', 'css-loader'],
+				use: ExtractTextPlugin.extract({
+					use: 'css-loader'
+				})
 			},
 			{
 				test: /\.jsx?$/,
@@ -37,7 +41,8 @@ module.exports = {
 				collapseWhitespace: true, //去除空格
 				removeComments: true //去除注释
 			}
-		})
+		}),
+		new ExtractTextPlugin('style.css')
 	],
 	resolve: {
 		extensions: ['.js', '.jsx', '.json']
