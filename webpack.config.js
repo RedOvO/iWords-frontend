@@ -1,18 +1,20 @@
-var webpack = require("webpack");
-var path = require("path");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
 	entry: {
-		main: './src/index.jsx',
+		main: './src/index.jsx'
 	},
 	output: {
 		filename: '[name]-bundle.js',
 		chunkFilename: '[name].[chunkhash:8].chunk.js',
-		path: __dirname + "/build"
+		path: `${__dirname}/build`,
+		publicPath: '../'
 	},
 	module: {
 		rules: [
@@ -40,7 +42,7 @@ module.exports = {
 				options: {
 					cacheDirectory: true,
 					presets: ['env', 'es2015', 'react', 'stage-2'],
-					plugins: ['syntax-dynamic-import', ['import', { libraryName: 'antd',  libraryDirectory: 'es', style: 'css' }]]
+					plugins: ['syntax-dynamic-import', ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]]
 				}
 			}
 		]
@@ -52,20 +54,21 @@ module.exports = {
 			template: 'public/index.html',
 			inject: 'body',
 			minify: {
-				collapseWhitespace: true, //去除空格
-				removeComments: true //去除注释
+				collapseWhitespace: true, // 去除空格
+				removeComments: true // 去除注释
 			}
 		}),
 		new ExtractTextPlugin('style.css'),
 		new UglifyJSPlugin({
-			sourceMap: true //内部参数如果不传react会警告，
-		})
+			sourceMap: true // 内部参数如果不传react会警告，
+		}),
+		new CleanWebpackPlugin()
 	],
 	resolve: {
 		extensions: ['.js', '.jsx', '.json']
 	},
 	devServer: {
-		contentBase: path.join(__dirname, "build"),
+		contentBase: path.join(__dirname, 'build'),
 		compress: true,
 		port: 8080
 	},
@@ -88,4 +91,4 @@ module.exports = {
 		}
 	}
 
-}
+};
