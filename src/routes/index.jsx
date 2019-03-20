@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loadable from "react-loadable";
 import {
 	browserHistory,
 	Router,
@@ -7,14 +8,25 @@ import {
 } from 'react-router';
 import UserMain from '../userMain';
 import App from '../App';
-import Login from '../pages/login/login';
-import SignUp from '../pages/signup/signup';
+//import Login from '../pages/login/login';
+//import SignUp from '../pages/signup/signup';
 import Recite from '../pages/recite/recite';
 import Book from '../pages/book/book';
 import Test from '../pages/test/test';
 import Review from '../pages/review/review';
 import Setting from '../pages/setting/setting';
 
+const Loading = () => <div>Loading...</div>;
+const Login = Loadable({
+   loader: () => import('../pages/login/login'),
+	 loading: Loading,
+	 timeout: 10000
+});
+const SignUp= Loadable({
+   loader: () => import('../pages/signup/signup'),
+	 loading: Loading,
+	 timeout: 10000
+});
 
 class WebRouter extends Component {
 	render() {
