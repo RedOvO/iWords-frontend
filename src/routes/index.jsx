@@ -6,26 +6,26 @@ import {
 	Route,
 	IndexRedirect
 } from 'react-router';
-import UserMain from '../userMain';
-import App from '../App';
-//import Login from '../pages/login/login';
-//import SignUp from '../pages/signup/signup';
+import Login from '../pages/login/login';
+import SignUp from '../pages/signup/signup';
 import Recite from '../pages/recite/recite';
 import Book from '../pages/book/book';
 import Test from '../pages/test/test';
 import Review from '../pages/review/review';
 import Setting from '../pages/setting/setting';
-
 const Loading = () => <div>Loading...</div>;
-const Login = Loadable({
-   loader: () => import('../pages/login/login'),
-	 loading: Loading,
-	 timeout: 10000
+
+const App = Loadable({
+	loader: () => import('../App'),
+	loading: Loading,
+	modules: ["App"],
+	delay: 10000
 });
-const SignUp= Loadable({
-   loader: () => import('../pages/signup/signup'),
-	 loading: Loading,
-	 timeout: 10000
+const UserMain = Loadable({
+	loader: () => import('../userMain'),
+	loading: () => null,
+	modules: ["UserMain"],
+	delay: 10000
 });
 
 class WebRouter extends Component {
